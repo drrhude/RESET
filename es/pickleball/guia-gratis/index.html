@@ -301,6 +301,14 @@ html,body{margin:0;background:#111410}
 .rst .lm-card h3{color:var(--cream)}
 .rst .lm-list{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:10px;color:var(--cream)}
 .rst .lm-list li:before{content:"— ";color:var(--sage)}
+.rst .oto-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin:18px 0 6px;color:var(--cream)}
+.rst .oto-price .now{font-family:var(--display,inherit);font-size:52px;line-height:1}
+.rst .oto-price s{font-size:22px;color:var(--sage)}
+.rst .oto-price .unit{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);width:100%}
+.rst .oto .btn{width:100%;text-align:center;background:var(--cream);color:var(--night);border-color:var(--cream)}
+.rst .sent > h3{display:none}
+.rst .oto-no{color:var(--sage);font-size:14px;text-decoration:underline;text-underline-offset:3px}
+.rst .oto-fine{font-size:12px;color:var(--sage);margin-top:14px}
 .rst .legal{max-width:72ch}.rst .legal h2{margin-top:36px;font-size:22px}.rst .legal p,.rst .legal li{color:var(--grey);line-height:1.65}
 @media (max-width:860px){.rst .lm-grid{grid-template-columns:1fr}.rst .form .row2{grid-template-columns:1fr}}
 </style><div class="rst" lang="es"><header class="nav"><div class="wrap">
@@ -334,7 +342,15 @@ html,body{margin:0;background:#111410}
       <label class="consent" style="color:var(--sage)"><input type="checkbox" name="consent" value="yes" required><span>Acepto recibir correos y mensajes de texto de RESET sobre mi guía y programas. La frecuencia varía. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar. Vea nuestra Política de Privacidad.</span></label>
       <div><button class="btn" type="submit">Envíenme la guía</button></div><p class="msg" role="status" style="color:var(--cream)"></p>
     </form>
-    <div class="done"><h3 style="color:var(--cream)">Es suya.</h3><p class="sub">Descárguela abajo. También le enviamos una copia a su correo.</p><p><a class="btn" href="../../../assets/guides/RESET_Pickleball_Free_Guide.pdf" download>Descargar la guía (PDF)</a></p><p class="esnote" style="text-align:left">La guía está en inglés por ahora. La versión en español llega muy pronto y se la enviaremos.</p></div>
+    <div class="done oto">
+      <div class="eyebrow">Su guía gratis va en camino</div>
+      <h3 style="color:var(--cream);margin-top:14px">Espere. ¿Quiere mejor el programa completo de 12 semanas?</h3>
+      <p class="sub" style="font-size:15px">Su guía gratis es una rutina de 10 minutos. La guía completa del Bloque 01 es el plan de 12 semanas: cada rutina, la biblioteca de videos, las herramientas de seguimiento y el plan para recaídas. En nuestro sitio cuesta $197. Por estar aquí, es suya por $47.</p>
+      <div class="oto-price"><span class="now">$47</span><s>$197</s><span class="unit">pago único · acceso inmediato</span></div>
+      <p><a class="btn oto-yes" href="#checkout-link-pending">Sí, quiero el programa completo por $47</a></p>
+      <p><a class="oto-no" href="../../../assets/guides/RESET_Pickleball_Free_Guide.pdf" download>No, gracias, solo quiero mi guía gratis</a></p>
+      <p class="oto-fine">Este precio solo se ofrece en esta página, justo después de pedir su guía gratis.</p><p class="esnote" style="text-align:left">La guía está en inglés por ahora. La versión en español llega muy pronto y se la enviaremos.</p>
+    </div>
   </div>
 </div></section>
 <script>
@@ -349,7 +365,7 @@ html,body{margin:0;background:#111410}
       var q=new URLSearchParams(location.search);["utm_source","utm_medium","utm_campaign","utm_content","fbclid","gclid"].forEach(function(k){if(q.get(k))d.append(k,q.get(k))});
       d.append("page",location.pathname);d.append("submitted_at",new Date().toISOString());
       btn.disabled=true;
-      fetch(HOOK,{method:"POST",mode:"no-cors",body:d}).then(function(){f.closest("[data-wrap]").classList.add("sent");
+      fetch(HOOK,{method:"POST",mode:"no-cors",body:d}).then(function(){var w=f.closest("[data-wrap]");w.classList.add("sent");w.scrollIntoView({behavior:"smooth",block:"start"});
         if(window.fbq)fbq("track","Lead");if(window.gtag)gtag("event","generate_lead");})
       .catch(function(){btn.disabled=false;msg.textContent=f.dataset.err;});
     });
