@@ -317,14 +317,14 @@ html,body{margin:0;background:#111410}
   <nav class="nv-links" aria-label="Main">
     <a href="../">Home</a>
     <details class="nv-drop"><summary>Programs</summary><div class="nv-panel"><div><b>Rehab</b><a href="../back/">Low Back</a><a href="../neck/">Neck</a><a href="../knee/">Knee</a><a href="../shoulder/">Shoulder</a><a href="../hip/">Hip</a></div><div><b>Performance</b><a href="../golf/">Golf</a><a href="../pickleball/">Pickleball</a><a href="../dance/">Dance</a><a href="../student-athlete/">Student Athlete</a></div><div><b>Nutrition</b><a href="../nutrition/">Nutrition</a></div></div></details>
-    
+    <a href="../free-guides/">Free guides</a>
     <a href="../about/">About</a>
     <a href="../contact/" aria-current="page">Contact</a>
     <a class="lang" href="../es/contacto/" hreflang="es">Español</a>
     <a class="nv-cta" href="../#programs">Find your program</a>
   </nav>
   <details class="nv-burger"><summary>Menu</summary><nav class="nv-mob" aria-label="Mobile">
-    <a href="../">Home</a><b>Rehab</b><div class="sub"><a href="../back/">Low Back</a><a href="../neck/">Neck</a><a href="../knee/">Knee</a><a href="../shoulder/">Shoulder</a><a href="../hip/">Hip</a></div><b>Performance</b><div class="sub"><a href="../golf/">Golf</a><a href="../pickleball/">Pickleball</a><a href="../dance/">Dance</a><a href="../student-athlete/">Student Athlete</a></div><b>Nutrition</b><div class="sub"><a href="../nutrition/">Nutrition</a></div>
+    <a href="../">Home</a><b>Rehab</b><div class="sub"><a href="../back/">Low Back</a><a href="../neck/">Neck</a><a href="../knee/">Knee</a><a href="../shoulder/">Shoulder</a><a href="../hip/">Hip</a></div><b>Performance</b><div class="sub"><a href="../golf/">Golf</a><a href="../pickleball/">Pickleball</a><a href="../dance/">Dance</a><a href="../student-athlete/">Student Athlete</a></div><b>Nutrition</b><div class="sub"><a href="../nutrition/">Nutrition</a></div><a href="../free-guides/">Free guides</a>
     <a href="../about/">About</a><a href="../contact/">Contact</a>
     <a href="../es/contacto/" hreflang="es">Español</a></nav></details>
 </div></header>
@@ -332,12 +332,40 @@ html,body{margin:0;background:#111410}
 <section class="dark hero"><div class="wrap ty"><div class="eyebrow">Contact</div><h1 style="margin-top:22px">Talk to a real person.</h1><p class="sub">Not sure which program fits, or want to talk through your situation first? Book a free 15-minute call, or send us a message.</p></div></section>
 <section><div class="wrap ty">
   <h2>Book a free call</h2><p class="lede">Pick a time that works. We&#x27;ll call you.</p><div class="cal"><iframe src="https://api.leadconnectorhq.com/widget/booking/bfm2nz5q8zunZssLjwqy" style="width:100%;border:none;overflow:hidden;min-height:620px" scrolling="no" id="bfm2nz5q8zunZssLjwqy_reset" title="Book a call"></iframe><script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script></div>
-  
+  <div class="tybox" data-wrap><h2>Send a message</h2>
+    <form class="form" data-reset data-err="Something went wrong. Please try again or book a call.">
+      <input type="hidden" name="form" value="contact"><input type="hidden" name="lang" value="en">
+      <div class="row2"><label>Name<input name="name" autocomplete="name" required></label><label>Phone<input name="phone" type="tel" autocomplete="tel"></label></div>
+      <label>Email<input name="email" type="email" autocomplete="email" required></label>
+      <label>Program you&#x27;re interested in<select name="program"><option value="">Not sure yet</option><option>RESET Back</option><option>RESET Neck</option><option>RESET Knee</option><option>RESET Shoulder</option><option>RESET Hip</option><option>RESET Golf</option><option>RESET Pickleball</option><option>RESET Dance</option><option>RESET Student Athlete</option><option>RESET Nutrition</option></select></label>
+      <label>Message<textarea name="message" required></textarea></label>
+      <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>I agree to receive emails and text messages from RESET about my guide and programs. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out. See our Privacy Policy.</span></label>
+      <div><button class="btn" type="submit">Send message</button></div><p class="msg" role="status"></p>
+    </form>
+    <div class="done"><h3>Message sent.</h3><p class="lede">Thanks. We&#x27;ll get back to you within one business day.</p></div></div><script>
+(function(){
+  var HOOK="https://services.leadconnectorhq.com/hooks/BXlSfFzyIpA84GnF6GGR/webhook-trigger/85c2982e-7897-4f10-b4d6-d3e0268e58a9";
+  document.querySelectorAll("form[data-reset]").forEach(function(f){
+    f.addEventListener("submit",function(ev){
+      ev.preventDefault();
+      var btn=f.querySelector("button[type=submit]"),msg=f.querySelector(".msg");
+      if(!f.reportValidity())return;
+      var d=new URLSearchParams(new FormData(f));
+      var q=new URLSearchParams(location.search);["utm_source","utm_medium","utm_campaign","utm_content","fbclid","gclid"].forEach(function(k){if(q.get(k))d.append(k,q.get(k))});
+      d.append("page",location.pathname);d.append("submitted_at",new Date().toISOString());
+      btn.disabled=true;
+      fetch(HOOK,{method:"POST",mode:"no-cors",body:d}).then(function(){var w=f.closest("[data-wrap]");w.classList.add("sent");w.scrollIntoView({behavior:"smooth",block:"start"});
+        if(window.fbq)fbq("track","Lead");if(window.gtag)gtag("event","generate_lead");})
+      .catch(function(){btn.disabled=false;msg.textContent=f.dataset.err;});
+    });
+  });
+})();
+</script>
   <p class="esnote" style="margin-top:32px">RESET programs are education and exercise, not medical care. Please don&#x27;t send private medical details through this form.</p>
 </div></section>
 <footer><div class="wrap">
   <div class="row"><span class="lg" role="img" aria-label="RESET"></span><span class="mono">Created by Dr. Jonathan Urrutia, DC · resethybridrecovery.com</span></div>
-  <div class="flinks"><a href="../#programs">Programs</a><a href="../about/">About</a><a href="../contact/">Contact</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></div>
+  <div class="flinks"><a href="../#programs">Programs</a><a href="../free-guides/">Free guides</a><a href="../about/">About</a><a href="../contact/">Contact</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></div>
   <p class="disc">RESET programs are education and exercise programs. They are not medical care and do not diagnose or treat any condition. Check-ins are coaching and education, not medical treatment. Talk to your healthcare provider before starting if you have a medical condition, recent surgery or injury, or symptoms like chest pain, numbness, weakness, or loss of bladder or bowel control. Results vary.</p>
 </div></footer></div>
 <script>

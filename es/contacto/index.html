@@ -317,14 +317,14 @@ html,body{margin:0;background:#111410}
   <nav class="nv-links" aria-label="Main">
     <a href="../../es/">Inicio</a>
     <details class="nv-drop"><summary>Programas</summary><div class="nv-panel"><div><b>Rehabilitación</b><a href="../../es/espalda/">Espalda baja</a><a href="../../es/cuello/">Cuello</a><a href="../../es/rodilla/">Rodilla</a><a href="../../es/hombro/">Hombro</a><a href="../../es/cadera/">Cadera</a></div><div><b>Rendimiento</b><a href="../../es/golf/">Golf</a><a href="../../es/pickleball/">Pickleball</a><a href="../../es/danza/">Danza</a><a href="../../es/atleta-estudiante/">Atleta estudiante</a></div><div><b>Nutrición</b><a href="../../es/nutricion/">Nutrición</a></div></div></details>
-    
+    <a href="../../es/guias-gratis/">Guías gratis</a>
     <a href="../../es/nosotros/">Nosotros</a>
     <a href="../../es/contacto/" aria-current="page">Contacto</a>
     <a class="lang" href="../../contact/" hreflang="en">English</a>
     <a class="nv-cta" href="../../es/#programs">Encuentre su programa</a>
   </nav>
   <details class="nv-burger"><summary>Menú</summary><nav class="nv-mob" aria-label="Mobile">
-    <a href="../../es/">Inicio</a><b>Rehabilitación</b><div class="sub"><a href="../../es/espalda/">Espalda baja</a><a href="../../es/cuello/">Cuello</a><a href="../../es/rodilla/">Rodilla</a><a href="../../es/hombro/">Hombro</a><a href="../../es/cadera/">Cadera</a></div><b>Rendimiento</b><div class="sub"><a href="../../es/golf/">Golf</a><a href="../../es/pickleball/">Pickleball</a><a href="../../es/danza/">Danza</a><a href="../../es/atleta-estudiante/">Atleta estudiante</a></div><b>Nutrición</b><div class="sub"><a href="../../es/nutricion/">Nutrición</a></div>
+    <a href="../../es/">Inicio</a><b>Rehabilitación</b><div class="sub"><a href="../../es/espalda/">Espalda baja</a><a href="../../es/cuello/">Cuello</a><a href="../../es/rodilla/">Rodilla</a><a href="../../es/hombro/">Hombro</a><a href="../../es/cadera/">Cadera</a></div><b>Rendimiento</b><div class="sub"><a href="../../es/golf/">Golf</a><a href="../../es/pickleball/">Pickleball</a><a href="../../es/danza/">Danza</a><a href="../../es/atleta-estudiante/">Atleta estudiante</a></div><b>Nutrición</b><div class="sub"><a href="../../es/nutricion/">Nutrición</a></div><a href="../../es/guias-gratis/">Guías gratis</a>
     <a href="../../es/nosotros/">Nosotros</a><a href="../../es/contacto/">Contacto</a>
     <a href="../../contact/" hreflang="en">English</a></nav></details>
 </div></header>
@@ -332,12 +332,40 @@ html,body{margin:0;background:#111410}
 <section class="dark hero"><div class="wrap ty"><div class="eyebrow">Contacto</div><h1 style="margin-top:22px">Hable con una persona real.</h1><p class="sub">¿No sabe qué programa le conviene, o quiere platicar su situación primero? Agende una llamada gratuita de 15 minutos o envíenos un mensaje.</p></div></section>
 <section><div class="wrap ty">
   <h2>Agende una llamada gratis</h2><p class="lede">Elija el horario que le convenga. Nosotros le llamamos.</p><div class="cal"><iframe src="https://api.leadconnectorhq.com/widget/booking/bfm2nz5q8zunZssLjwqy" style="width:100%;border:none;overflow:hidden;min-height:620px" scrolling="no" id="bfm2nz5q8zunZssLjwqy_reset" title="Book a call"></iframe><script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script></div>
-  
+  <div class="tybox" data-wrap><h2>Envíe un mensaje</h2>
+    <form class="form" data-reset data-err="Algo salió mal. Intente de nuevo o agende una llamada.">
+      <input type="hidden" name="form" value="contact"><input type="hidden" name="lang" value="es">
+      <div class="row2"><label>Nombre<input name="name" autocomplete="name" required></label><label>Teléfono<input name="phone" type="tel" autocomplete="tel"></label></div>
+      <label>Correo<input name="email" type="email" autocomplete="email" required></label>
+      <label>Programa que le interesa<select name="program"><option value="">Todavía no sé</option><option>RESET Espalda</option><option>RESET Cuello</option><option>RESET Rodilla</option><option>RESET Hombro</option><option>RESET Cadera</option><option>RESET Golf</option><option>RESET Pickleball</option><option>RESET Danza</option><option>RESET Atleta Estudiante</option><option>RESET Nutrición</option></select></label>
+      <label>Mensaje<textarea name="message" required></textarea></label>
+      <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>Acepto recibir correos y mensajes de texto de RESET sobre mi guía y programas. La frecuencia varía. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar. Vea nuestra Política de Privacidad.</span></label>
+      <div><button class="btn" type="submit">Enviar mensaje</button></div><p class="msg" role="status"></p>
+    </form>
+    <div class="done"><h3>Mensaje enviado.</h3><p class="lede">Gracias. Le respondemos en un día hábil.</p></div></div><script>
+(function(){
+  var HOOK="https://services.leadconnectorhq.com/hooks/BXlSfFzyIpA84GnF6GGR/webhook-trigger/85c2982e-7897-4f10-b4d6-d3e0268e58a9";
+  document.querySelectorAll("form[data-reset]").forEach(function(f){
+    f.addEventListener("submit",function(ev){
+      ev.preventDefault();
+      var btn=f.querySelector("button[type=submit]"),msg=f.querySelector(".msg");
+      if(!f.reportValidity())return;
+      var d=new URLSearchParams(new FormData(f));
+      var q=new URLSearchParams(location.search);["utm_source","utm_medium","utm_campaign","utm_content","fbclid","gclid"].forEach(function(k){if(q.get(k))d.append(k,q.get(k))});
+      d.append("page",location.pathname);d.append("submitted_at",new Date().toISOString());
+      btn.disabled=true;
+      fetch(HOOK,{method:"POST",mode:"no-cors",body:d}).then(function(){var w=f.closest("[data-wrap]");w.classList.add("sent");w.scrollIntoView({behavior:"smooth",block:"start"});
+        if(window.fbq)fbq("track","Lead");if(window.gtag)gtag("event","generate_lead");})
+      .catch(function(){btn.disabled=false;msg.textContent=f.dataset.err;});
+    });
+  });
+})();
+</script>
   <p class="esnote" style="margin-top:32px">Los programas RESET son educación y ejercicio, no atención médica. Por favor no envíe datos médicos privados en este formulario.</p>
 </div></section>
 <footer><div class="wrap">
   <div class="row"><span class="lg" role="img" aria-label="RESET"></span><span class="mono">Creado por el Dr. Jonathan Urrutia, DC · resethybridrecovery.com</span></div>
-  <div class="flinks"><a href="../../es/#programs">Programas</a><a href="../../es/nosotros/">Nosotros</a><a href="../../es/contacto/">Contacto</a><a href="../../es/privacidad/">Privacidad</a><a href="../../es/terminos/">Términos</a></div>
+  <div class="flinks"><a href="../../es/#programs">Programas</a><a href="../../es/guias-gratis/">Guías gratis</a><a href="../../es/nosotros/">Nosotros</a><a href="../../es/contacto/">Contacto</a><a href="../../es/privacidad/">Privacidad</a><a href="../../es/terminos/">Términos</a></div>
   <p class="disc">Los programas RESET son programas de educación y ejercicio. No son atención médica y no diagnostican ni tratan ninguna condición. Las consultas semanales son de orientación y educación, no tratamiento médico. Hable con su proveedor de salud antes de comenzar si tiene una condición médica, una cirugía o lesión reciente, o síntomas como dolor de pecho, entumecimiento, debilidad o pérdida del control de la vejiga o los intestinos. Los resultados varían.</p>
 </div></footer></div>
 <script>
