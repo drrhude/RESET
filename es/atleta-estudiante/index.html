@@ -257,10 +257,69 @@ html,body{margin:0;background:#111410}
 .rst .opt b{display:block;font-family:var(--display,inherit);font-size:18px;color:var(--ink)}
 .rst .opt em{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--grey)}
 .rst .mono-link{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+</style><style>
+.rst .nav .wrap{gap:18px}
+.rst .nv-links{display:flex;align-items:center;gap:22px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream)}
+.rst .nv-links a,.rst .nv-links summary{color:var(--cream);text-decoration:none;opacity:.85;cursor:pointer}
+.rst .nv-links a:hover,.rst .nv-links summary:hover,.rst .nv-links a[aria-current]{opacity:1}
+.rst .nv-links a[aria-current]{border-bottom:1px solid var(--sage)}
+.rst .nv-drop{position:relative}
+.rst .nv-drop,.rst .nv-burger{border:0;padding:0}
+.rst .nv-drop summary,.rst .nv-burger summary{display:inline;font:inherit;font-weight:400;font-size:inherit;letter-spacing:inherit;gap:0}
+.rst .nv-drop summary:after,.rst details[open].nv-drop summary:after{content:" ▾";font-size:10px;color:inherit;font-family:inherit}
+.rst .nv-burger summary:after,.rst details[open].nv-burger summary:after{content:""}
+.rst .nv-panel{position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%);background:var(--night);border:1px solid #2E3229;padding:22px;display:grid;grid-template-columns:repeat(3,minmax(150px,1fr));gap:22px;min-width:560px;z-index:30}
+.rst .nv-panel b{display:block;color:var(--sage);font-weight:500;margin-bottom:10px;font-size:11px}
+.rst .nv-panel a{display:block;padding:5px 0;letter-spacing:.08em;text-transform:none;font-family:var(--body,inherit);font-size:15px;opacity:.9}
+.rst .nv-cta{border:1px solid var(--cream);padding:8px 12px;opacity:1!important}
+.rst .nv-burger{display:none}
+@media (max-width:900px){
+ .rst .nv-links{display:none}
+ .rst .nv-burger{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream)}
+ .rst .nv-burger summary{display:block;cursor:pointer;border:1px solid #3F4335;padding:7px 11px}
+ .rst .nv-burger summary::-webkit-details-marker{display:none}
+ .rst .nv-mob{position:absolute;left:0;right:0;top:64px;background:var(--night);border-bottom:1px solid #2E3229;padding:14px 20px 22px;display:grid;gap:4px;max-height:calc(100vh - 64px);overflow:auto}
+ .rst .nv-mob a{color:var(--cream);text-decoration:none;padding:9px 0;border-bottom:1px solid #22261E;font-size:13px}
+ .rst .nv-mob b{color:var(--sage);font-weight:500;font-size:11px;margin-top:12px}
+ .rst .nv-mob .sub a{display:block;padding-left:12px;text-transform:none;font-family:var(--body,inherit);font-size:15px;letter-spacing:.02em}
+}
+.rst footer .flinks{display:flex;flex-wrap:wrap;gap:8px 20px;margin:18px 0 6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.rst footer .flinks a{color:var(--cream);text-decoration:none;opacity:.8}
+.rst .form{display:grid;gap:12px;margin-top:22px;max-width:560px}
+.rst .form .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rst .form label{display:grid;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.rst .dark .form label{color:var(--sage)}
+.rst .form input,.rst .form select,.rst .form textarea{font:inherit;font-family:var(--body,inherit);font-size:16px;letter-spacing:0;text-transform:none;padding:13px 14px;border:1px solid var(--hair);background:#fff;color:var(--ink);border-radius:0}
+.rst .form textarea{min-height:120px}
+.rst .form .consent{display:flex;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;font-family:var(--body,inherit);font-size:12.5px;line-height:1.45}
+.rst .form .consent input{margin-top:3px;accent-color:var(--olive)}
+.rst .form .msg{font-size:14px}
+.rst .done{display:none}
+.rst .sent .form{display:none}.rst .sent .done{display:block}
+.rst .lm-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:start}
+.rst .lm-card{background:var(--char);border:1px solid #2E3229;padding:28px}
+.rst .lm-card h3{color:var(--cream)}
+.rst .lm-list{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:10px;color:var(--cream)}
+.rst .lm-list li:before{content:"— ";color:var(--sage)}
+.rst .legal{max-width:72ch}.rst .legal h2{margin-top:36px;font-size:22px}.rst .legal p,.rst .legal li{color:var(--grey);line-height:1.65}
+@media (max-width:860px){.rst .lm-grid{grid-template-columns:1fr}.rst .form .row2{grid-template-columns:1fr}}
 </style><div class="rst" lang="es"><header class="nav"><div class="wrap">
   <a href="../../es/" aria-label="RESET home"><span class="lg" role="img" aria-label="RESET"></span></a>
-  <nav class="links"><a class="hide-sm" href="#plans">Elegir plan</a><a class="lang" href="../../student-athlete/" hreflang="en">English</a></nav>
+  <nav class="nv-links" aria-label="Main">
+    <a href="../../es/">Inicio</a>
+    <details class="nv-drop"><summary>Programas</summary><div class="nv-panel"><div><b>Rehabilitación</b><a href="../../es/espalda/">Espalda baja</a><a href="../../es/cuello/">Cuello</a><a href="../../es/rodilla/">Rodilla</a><a href="../../es/hombro/">Hombro</a><a href="../../es/cadera/">Cadera</a></div><div><b>Rendimiento</b><a href="../../es/golf/">Golf</a><a href="../../es/pickleball/">Pickleball</a><a href="../../es/danza/">Danza</a><a href="../../es/atleta-estudiante/">Atleta estudiante</a></div><div><b>Nutrición</b><a href="../../es/nutricion/">Nutrición</a></div></div></details>
+    
+    <a href="../../es/nosotros/">Nosotros</a>
+    <a href="../../es/contacto/">Contacto</a>
+    <a class="lang" href="../../student-athlete/" hreflang="en">English</a>
+    <a class="nv-cta" href="#plans">Elegir plan</a>
+  </nav>
+  <details class="nv-burger"><summary>Menú</summary><nav class="nv-mob" aria-label="Mobile">
+    <a href="../../es/">Inicio</a><b>Rehabilitación</b><div class="sub"><a href="../../es/espalda/">Espalda baja</a><a href="../../es/cuello/">Cuello</a><a href="../../es/rodilla/">Rodilla</a><a href="../../es/hombro/">Hombro</a><a href="../../es/cadera/">Cadera</a></div><b>Rendimiento</b><div class="sub"><a href="../../es/golf/">Golf</a><a href="../../es/pickleball/">Pickleball</a><a href="../../es/danza/">Danza</a><a href="../../es/atleta-estudiante/">Atleta estudiante</a></div><b>Nutrición</b><div class="sub"><a href="../../es/nutricion/">Nutrición</a></div>
+    <a href="../../es/nosotros/">Nosotros</a><a href="../../es/contacto/">Contacto</a>
+    <a href="../../student-athlete/" hreflang="en">English</a></nav></details>
 </div></header>
+<script>document.addEventListener("click",function(ev){document.querySelectorAll(".rst details.nv-drop[open],.rst details.nv-burger[open]").forEach(function(d){if(!d.contains(ev.target))d.removeAttribute("open")})});</script>
 <section class="dark hero"><div class="wrap hero-grid">
   <div><div class="eyebrow">RESET Atleta Estudiante · Desarrollo atlético todo el año</div>
     <h1 style="margin-top:22px">Forme al atleta, no solo al jugador.</h1>
@@ -305,6 +364,7 @@ html,body{margin:0;background:#111410}
 </div></section>
 <footer><div class="wrap">
   <div class="row"><span class="lg" role="img" aria-label="RESET"></span><span class="mono">Creado por el Dr. Jonathan Urrutia, DC · resethybridrecovery.com</span></div>
+  <div class="flinks"><a href="../../es/#programs">Programas</a><a href="../../es/nosotros/">Nosotros</a><a href="../../es/contacto/">Contacto</a><a href="../../es/privacidad/">Privacidad</a><a href="../../es/terminos/">Términos</a></div>
   <p class="disc">Los programas RESET son programas de educación y ejercicio. No son atención médica y no diagnostican ni tratan ninguna condición. Las consultas semanales son de orientación y educación, no tratamiento médico. Hable con su proveedor de salud antes de comenzar si tiene una condición médica, una cirugía o lesión reciente, o síntomas como dolor de pecho, entumecimiento, debilidad o pérdida del control de la vejiga o los intestinos. Los resultados varían.</p>
 </div></footer></div>
 <script>
