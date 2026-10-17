@@ -128,6 +128,24 @@ CSS = """<style>
 .rst .rv-cta p{color:#B8B3A6;margin-top:12px;max-width:52ch}
 .rst .rv-cta .btns{display:flex;flex-wrap:wrap;gap:12px;position:relative;z-index:1}
 .rst .rv-cta .btn.ghost{color:var(--cream);border-color:rgba(237,230,218,.5)}
+.rst .rv-score{font-family:var(--display);font-weight:500;font-size:28px;color:var(--ink);display:inline-flex;align-items:center;gap:8px;margin-right:6px;vertical-align:middle}
+.rst .rv-score .mini{display:inline-flex;gap:2px;color:#B4935A}.rst .rv-score .mini svg{width:14px;height:14px;animation:rvTw 3.2s ease-in-out infinite}
+.rst .rv-score .mini svg:nth-child(2){animation-delay:.2s}.rst .rv-score .mini svg:nth-child(3){animation-delay:.4s}.rst .rv-score .mini svg:nth-child(4){animation-delay:.6s}.rst .rv-score .mini svg:nth-child(5){animation-delay:.8s}
+@keyframes rvTw{0%,70%,100%{transform:none}80%{transform:scale(1.3)}}
+.rst .rv-quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.rst .rv-q{position:relative;overflow:hidden;margin:0;background:var(--paper);border:1px solid var(--hair);padding:24px;display:flex;flex-direction:column;gap:14px;transition:transform .7s cubic-bezier(.2,.7,.2,1),border-color .7s,box-shadow .7s}
+.rst .rv-q:before{content:"“";position:absolute;right:14px;top:-22px;font:500 130px/1 var(--serif);color:#B4935A;opacity:.14}
+.rst .rv-q .stars{display:flex;gap:3px;color:#B4935A}.rst .rv-q .stars svg{width:15px;height:15px;opacity:0;transform:scale(.3) rotate(-30deg);transition:opacity .4s,transform .6s cubic-bezier(.34,1.56,.64,1)}
+.rst .rv-q.in .stars svg{opacity:1;transform:none}
+.rst .rv-q.in .stars svg:nth-child(2){transition-delay:.1s}.rst .rv-q.in .stars svg:nth-child(3){transition-delay:.2s}.rst .rv-q.in .stars svg:nth-child(4){transition-delay:.3s}.rst .rv-q.in .stars svg:nth-child(5){transition-delay:.4s}
+.rst .rv-q p{font-family:var(--serif);font-size:22px;line-height:1.3}
+.rst .rv-q cite{font-style:normal;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);margin-top:auto}
+.rst .rv-q.lit{transform:translateY(-6px);border-color:rgba(180,147,90,.6);box-shadow:0 30px 50px -30px rgba(17,20,16,.5)}
+.rst .rv-q:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(180,147,90,.14) 50%,transparent 70%);transform:translateX(-120%);pointer-events:none}
+.rst .rv-q.lit:after{animation:rvSheen 1.4s cubic-bezier(.2,.7,.2,1)}
+@keyframes rvSheen{to{transform:translateX(120%)}}
+@media (max-width:860px){.rst .rv-quotes{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.rst .rv-q .stars svg{opacity:1;transform:none}.rst .rv-score .mini svg,.rst .rv-q.lit:after{animation:none}}
 .rst .tiers{margin-top:0}
 .rst .rv-box.night .btn{background:var(--cream);color:var(--night);border-color:var(--cream)}
 .rst .rv-box.night .btn:hover{background:transparent;color:var(--cream)}
@@ -194,6 +212,13 @@ BODY = f"""{CSS}
   </div>
 </div></section>
 
+<section class="rv" id="reviews" style="padding-top:0"><div class="wrap">
+  <div class="rv-box">
+    <div class="rv-head"><div><div class="eyebrow">Patient Reviews</div><h2>What patients say about Dr. Urrutia</h2></div><p><b class="rv-score">5.0 <span class="mini"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></span></b> from 80 Google reviews of Dr. Urrutia's in-clinic care. RESET is built on the same approach.</p></div>
+    <div class="rv-quotes"><blockquote class="rv-q"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></div><p>&ldquo;Doctor is extremely compassionate. Explains everything so well.&rdquo;</p><cite>Trisha M., Google review</cite></blockquote><blockquote class="rv-q"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></div><p>&ldquo;Excellent intake appointment.&rdquo;</p><cite>John S., Google review</cite></blockquote><blockquote class="rv-q"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></div><p>&ldquo;Excellent service.&rdquo;</p><cite>Rahila V., Google review</cite></blockquote></div>
+  </div>
+</div></section>
+
 <section class="rv" id="tiers" style="padding-top:0"><div class="wrap">
   <div class="rv-box">
     <div class="rv-head"><div><div class="eyebrow">Choose Your Support</div><h2>Three ways to do it</h2></div><p>Same program, three levels of help. Start on your own or work with us every week.</p></div>
@@ -234,6 +259,9 @@ JS = r"""<script>
 (function(){var b=document.querySelector(".rv-bar");if(!b)return;if(!("IntersectionObserver" in window)){b.classList.add("seen");return}
 new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){b.classList.add("seen");o.disconnect()}})},{threshold:.4}).observe(b);
 var v=document.querySelector(".rv-hero video");if(v){var rm=matchMedia("(prefers-reduced-motion: reduce)").matches,sd=navigator.connection&&navigator.connection.saveData;if(rm||sd){v.removeAttribute("autoplay");v.pause()}else{new IntersectionObserver(function(es){es[0].isIntersecting?v.play().catch(function(){}):v.pause()}).observe(v)}}
+var qs=[].slice.call(document.querySelectorAll(".rv-q"));if(qs.length){var rm2=matchMedia("(prefers-reduced-motion: reduce)").matches,i=0,t=null;
+function step(){qs.forEach(function(q){q.classList.remove("lit")});qs[i%qs.length].classList.add("lit");i++}
+new IntersectionObserver(function(es){var e=es[0];if(e.isIntersecting){qs.forEach(function(q){q.classList.add("in")});if(!rm2&&!t){setTimeout(step,1200);t=setInterval(step,3600)}}else if(t){clearInterval(t);t=null;qs.forEach(function(q){q.classList.remove("lit")})}},{threshold:.35}).observe(qs[0].parentElement)}
 document.addEventListener("click",function(e){var a=e.target.closest("a");if(!a||typeof gtag!=="function")return;var h=a.getAttribute("href")||"";
 if(h.indexOf("free-guide")>-1)gtag("event","free_guide_click",{link_text:a.textContent.trim().slice(0,60)});else if(/checkout|fastpaydirect/.test(h))gtag("event","begin_checkout",{link_url:a.href});else if(h.indexOf("#programs")>-1)gtag("event","find_program_click",{link_text:a.textContent.trim().slice(0,60)})},true)})();
 </script>"""
