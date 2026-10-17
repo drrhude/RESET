@@ -65,12 +65,20 @@ ld = '<script type="application/ld+json">' + json.dumps({"@context": "https://sc
 CSS = """<style>
 /* ---------- RESET home v2: video hero, floating boxes, section labels ---------- */
 .rst .nav{background:rgba(17,20,16,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.rst .rv-hero{position:relative;overflow:hidden;color:var(--cream);background:var(--night);min-height:min(70svh,640px);display:flex;align-items:flex-end}
+.rst .rv-hero{position:relative;overflow:hidden;color:var(--cream);background:var(--night);min-height:min(58svh,540px);display:flex;align-items:flex-end;padding:0}
 .rst .rv-hero video,.rst .rv-hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.rst .rv-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,20,16,.35),rgba(17,20,16,.1) 40%,rgba(17,20,16,.7)),linear-gradient(90deg,rgba(17,20,16,.55),rgba(17,20,16,0) 65%)}
-.rst .rv-hero .wrap{position:relative;z-index:2;width:100%;padding-top:72px;padding-bottom:96px}
-.rst .rv-hero h1{margin-top:18px;max-width:14ch}
-.rst .rv-hero .sub{max-width:54ch;font-size:18px;color:#DAD4C7;margin-top:18px}
+.rst .rv-hero:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(17,20,16,.62),rgba(17,20,16,.46) 45%,rgba(17,20,16,.78)),linear-gradient(90deg,rgba(17,20,16,.5),rgba(17,20,16,0) 70%)}
+.rst .rv-hero:before{content:"";position:absolute;inset:-48px;z-index:1;background-image:linear-gradient(rgba(164,170,146,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(164,170,146,.09) 1px,transparent 1px);background-size:48px 48px;animation:rvGrid 22s linear infinite;pointer-events:none}
+@keyframes rvGrid{to{transform:translate(48px,48px)}}
+.rst .rv-hero .wrap{position:relative;z-index:2;width:100%;padding-top:56px;padding-bottom:84px}
+.rst .rv-hero .scan{position:absolute;left:0;right:0;height:120px;top:-120px;z-index:1;background:linear-gradient(180deg,transparent,rgba(164,170,146,.07),transparent);animation:rvScan 7s ease-in-out infinite;pointer-events:none}
+@keyframes rvScan{0%{top:-120px}60%,100%{top:100%}}
+.rst .rv-hero .eyebrow:before{animation:rvLine 1s .2s both cubic-bezier(.2,.7,.2,1)}
+@keyframes rvLine{from{width:0}to{width:22px}}
+.rst.js .rv-hero .rv-offer{animation:rstFade .8s ease .8s both}
+.rst .rv-hero h1{margin-top:16px;max-width:16ch;font-size:clamp(36px,5.4vw,66px)}
+.rst .rv-hero .ctas{margin-top:22px}
+.rst .rv-hero .sub{max-width:54ch;font-size:17px;color:#DAD4C7;margin-top:14px}
 .rst .rv-hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 .rst .rv-hero .btn{background:var(--cream);color:var(--night);border-color:var(--cream)}
 .rst .rv-hero .btn:hover{background:transparent;color:var(--cream)}
@@ -147,6 +155,22 @@ CSS = """<style>
 @media (max-width:860px){.rst .rv-quotes{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.rst .rv-q .stars svg{opacity:1;transform:none}.rst .rv-score .mini svg,.rst .rv-q.lit:after{animation:none}}
 .rst .tiers{margin-top:0}
+.rst.js .rv-box,.rst.js .rv-trust{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rst.js .rv-box.in,.rst.js .rv-trust.in{opacity:1;transform:none}
+.rst.js .rv-prog,.rst.js .rv-path li,.rst.js .rv-trust > div{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),background .25s,color .25s}
+.rst.js .in .rv-prog,.rst.js .in .rv-path li,.rst.js .rv-trust.in > div{opacity:1;transform:none}
+.rst .rv-path{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative;border-top:1px solid var(--hair)}
+.rst .rv-path:before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--olive);transition:width 1.6s cubic-bezier(.6,.1,.2,1) .3s}
+.rst .in .rv-path:before{width:100%}
+.rst .rv-path li{padding:16px 16px 0 0}
+.rst .rv-path .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--olive)}
+.rst .rv-path b{display:block;font-family:var(--display);font-weight:500;font-size:20px;text-transform:uppercase;margin-top:6px}
+.rst .rv-path span{display:block;color:var(--grey);font-size:14px;margin-top:6px;line-height:1.45}
+.rst .rv-path li.now b{color:var(--olive-d)}
+.rst .rv-path li.now .k:after{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--olive);margin-left:8px;vertical-align:middle;animation:rvPulse 1.8s ease-in-out infinite}
+@keyframes rvPulse{50%{opacity:.25;transform:scale(1.6)}}
+@media (max-width:860px){.rst .rv-path{grid-template-columns:1fr 1fr;gap:4px 0}}
+@media (prefers-reduced-motion:reduce){.rst.js .rv-box,.rst.js .rv-trust,.rst.js .rv-prog,.rst.js .rv-path li,.rst.js .rv-trust > div{opacity:1;transform:none}.rst .rv-hero:before,.rst .rv-hero .scan{animation:none}}
 .rst .rv-box.night .btn{background:var(--cream);color:var(--night);border-color:var(--cream)}
 .rst .rv-box.night .btn:hover{background:transparent;color:var(--cream)}
 .rst .rv-box.night .btn.ghost{background:transparent;color:var(--cream);border-color:rgba(237,230,218,.5)}
@@ -154,7 +178,7 @@ CSS = """<style>
 @media (max-width:860px){
  .rst .rv-trust{grid-template-columns:1fr 1fr}.rst .rv-trust div{border-bottom:1px solid var(--hair)}.rst .rv-trust div:nth-child(2n){border-right:0}.rst .rv-trust div:last-child{grid-column:span 2;border-bottom:0}
  .rst .rv-head,.rst .rv-doc,.rst .rv-faq,.rst .rv-cta,.rst .rv-legend{grid-template-columns:1fr}
- .rst .rv-hero .wrap{padding-bottom:84px}
+ .rst .rv-hero .wrap{padding-bottom:76px;padding-top:44px}
  .rst .rv-progs{grid-template-columns:1fr 1fr}.rst .rv-prog{min-height:0;padding:16px 14px}.rst .rv-prog h3{font-size:20px}.rst .rv-prog p{font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){.rst .rv-bar .seg{transition:none}.rst .rv-bar .a{width:35%}.rst .rv-bar .b{width:65%}}
@@ -170,7 +194,7 @@ TIERS = f"""<div class="tiers">
 </div><p class="tiers-foot">Custom and Doctor-Led renew into your next 12-week block until you cancel. That's how the progress sticks.</p>"""
 
 BODY = f"""{CSS}
-<section class="rv-hero" aria-label="Welcome">
+<section class="rv-hero hero" aria-label="Welcome"><span class="scan" aria-hidden="true"></span>
   <div class="poster" style="background:url({r}assets/hero-poster.webp) center/cover"></div>
   <video autoplay muted loop playsinline preload="metadata" poster="{r}assets/hero-poster.webp" aria-hidden="true" tabindex="-1"><source src="{r}assets/hero.mp4" type="video/mp4"></video>
   <div class="wrap">
@@ -184,9 +208,9 @@ BODY = f"""{CSS}
 
 <section class="rv" style="padding-top:0"><div class="wrap">
   <div class="rv-trust" aria-label="Why RESET">
-    <div><b>DC</b><span>Built by a Doctor of Chiropractic</span></div>
-    <div><b>USCG</b><span>Coast Guard veteran, 10 years active duty</span></div>
-    <div><b>12 Weeks</b><span>4 phases with clear gates</span></div>
+    <div><b>Doctor-Built</b><span>Every program, every phase</span></div>
+    <div><b>10 Years</b><span>Active duty, U.S. Coast Guard</span></div>
+    <div><b>10 Programs</b><span>Rehab, sport + nutrition</span></div>
     <div><b>Home or Gym</b><span>Every exercise has both</span></div>
     <div><b>EN + ES</b><span>Every program in Spanish</span></div>
   </div>
@@ -214,7 +238,7 @@ BODY = f"""{CSS}
 
 <section class="rv" id="reviews" style="padding-top:0"><div class="wrap">
   <div class="rv-box">
-    <div class="rv-head"><div><div class="eyebrow">Patient Reviews</div><h2>What patients say about Dr. Urrutia</h2></div><p><b class="rv-score">5.0 <span class="mini"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></span></b> from 80 Google reviews of Dr. Urrutia's in-clinic care. RESET is built on the same approach.</p></div>
+    <div class="rv-head"><div><div class="eyebrow">Patient Reviews</div><h2>What people say about working with Dr. Urrutia</h2></div><p><b class="rv-score">5.0 <span class="mini"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></span></b> from 80 Google reviews by people he's worked with in person. RESET brings that same coaching online.</p></div>
     <div class="rv-quotes"><blockquote class="rv-q"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></div><p>&ldquo;Doctor is extremely compassionate. Explains everything so well.&rdquo;</p><cite>Trisha M., Google review</cite></blockquote><blockquote class="rv-q"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></div><p>&ldquo;Excellent intake appointment.&rdquo;</p><cite>John S., Google review</cite></blockquote><blockquote class="rv-q"><div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></div><p>&ldquo;Excellent service.&rdquo;</p><cite>Rahila V., Google review</cite></blockquote></div>
   </div>
 </div></section>
@@ -228,13 +252,18 @@ BODY = f"""{CSS}
 
 <section class="rv" style="padding-top:0"><div class="wrap">
   <div class="rv-box mark rv-doc">
-    <img src="{r}assets/founder-540.webp" srcset="{r}assets/founder-540.webp 540w, {r}assets/founder-900.webp 900w" sizes="(max-width:860px) 92vw, 40vw" width="900" height="1352" alt="Dr. Jonathan Urrutia, DC, founder of RESET" loading="lazy" decoding="async">
+    <img src="{r}assets/founder-540.webp" srcset="{r}assets/founder-540.webp 540w, {r}assets/founder-900.webp 900w" sizes="(max-width:860px) 92vw, 40vw" width="900" height="1352" alt="Dr. Jonathan Urrutia, founder of RESET" loading="lazy" decoding="async">
     <div>
-      <div class="eyebrow">Meet Your Doctor</div>
-      <h2 style="margin-top:12px">Dr. Jonathan Urrutia, DC</h2>
-      <p>I'm a chiropractor, a Coast Guard veteran, a former bodybuilding competitor, a husband and a father. The same story kept walking through my door: "I did weeks of therapy, I felt better, and now I'm back."</p>
-      <p>The pain left, the exercises stopped, and life stayed the same. RESET is built to change the part that usually doesn't: what you do after the pain is gone.</p>
-      <ul class="rv-chips"><li>Doctor of Chiropractic</li><li>U.S. Coast Guard veteran</li><li>Advanced Activator certified</li><li>English + Español</li></ul>
+      <div class="eyebrow">The Founder</div>
+      <h2 style="margin-top:12px">Dr. Jonathan Urrutia</h2>
+      <p>Ten years on active duty in the Coast Guard. A former bodybuilding competitor. A doctor who works with people in pain and athletes every week, and a husband and father who trains around a full life like you do.</p>
+      <p>The same story kept coming up: "I felt better, then I was right back where I started." The pain left, the work stopped, and nothing else changed. RESET is what I built to fix that, so the progress keeps going after week 12.</p>
+      <ol class="rv-path">
+        <li><span class="k">Served</span><b>U.S. Coast Guard</b><span>10 years active duty.</span></li>
+        <li><span class="k">Trained</span><b>Doctorate, 2022</b><span>Parker University in Dallas.</span></li>
+        <li><span class="k">Built</span><b>His own practice</b><span>Treating pain and training athletes every week.</span></li>
+        <li class="now"><span class="k">Now</span><b>Building RESET</b><span>10 programs in English and Spanish, coaching Doctor-Led members each week.</span></li>
+      </ol>
       <p style="margin-top:24px"><a class="btn ghost" href="{r}about/">Read the full story <span class="arr">→</span></a></p>
     </div>
   </div>
@@ -259,6 +288,9 @@ JS = r"""<script>
 (function(){var b=document.querySelector(".rv-bar");if(!b)return;if(!("IntersectionObserver" in window)){b.classList.add("seen");return}
 new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){b.classList.add("seen");o.disconnect()}})},{threshold:.4}).observe(b);
 var v=document.querySelector(".rv-hero video");if(v){var rm=matchMedia("(prefers-reduced-motion: reduce)").matches,sd=navigator.connection&&navigator.connection.saveData;if(rm||sd){v.removeAttribute("autoplay");v.pause()}else{new IntersectionObserver(function(es){es[0].isIntersecting?v.play().catch(function(){}):v.pause()}).observe(v)}}
+(function(){var els=document.querySelectorAll(".rv-box,.rv-trust");if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in")});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add("in");io.unobserve(t);setTimeout(function(){t.querySelectorAll(".rv-prog,.rv-path li,:scope > div").forEach(function(c){c.style.transitionDelay=""})},1800)}})},{threshold:.12});
+els.forEach(function(e){io.observe(e);e.querySelectorAll(".rv-prog,.rv-path li,:scope > div").forEach(function(c,i){c.style.transitionDelay=(Math.min(i,10)*0.06)+"s"})})})();
 var qs=[].slice.call(document.querySelectorAll(".rv-q"));if(qs.length){var rm2=matchMedia("(prefers-reduced-motion: reduce)").matches,i=0,t=null;
 function step(){qs.forEach(function(q){q.classList.remove("lit")});qs[i%qs.length].classList.add("lit");i++}
 new IntersectionObserver(function(es){var e=es[0];if(e.isIntersecting){qs.forEach(function(q){q.classList.add("in")});if(!rm2&&!t){setTimeout(step,1200);t=setInterval(step,3600)}}else if(t){clearInterval(t);t=null;qs.forEach(function(q){q.classList.remove("lit")})}},{threshold:.35}).observe(qs[0].parentElement)}
