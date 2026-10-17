@@ -159,7 +159,25 @@ CSS = """<style>
 .rst .rv-box{border-color:#CFCDC1}
 .rst .rv-trust{background:#fff;border-color:#CFCDC1}
 .rst .rv-trust div{border-color:#E2E0D5}
-.rst .rv-prog,.rst .rv-q{background:#F4F2EB;border-color:#D3D1C5}
+.rst .rv-q{background:#F4F2EB;border-color:#D3D1C5}
+/* program tiles: green, rounded-but-sharp, lifted, animated on hover */
+.rst .rv-progs{gap:14px}
+.rst .rv-prog{position:relative;overflow:hidden;border-radius:6px;border:1px solid #50553F;background:linear-gradient(160deg,#4A4E3C 0%,#3F4335 55%,#363A2D 100%);color:var(--cream);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 14px 24px -14px rgba(17,20,16,.55),0 4px 8px -4px rgba(17,20,16,.3);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s cubic-bezier(.2,.8,.2,1),border-color .3s,opacity .6s ease}
+.rst .rv-prog p{color:#CFCABD}
+.rst .rv-prog .num{color:var(--sage)}
+.rst .rv-prog .go{border-color:rgba(237,230,218,.18);color:var(--cream)}
+.rst .rv-prog .arr{display:inline-block;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.rst .rv-prog:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(237,230,218,.12) 50%,transparent 65%);transform:translateX(-120%);transition:transform .9s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.rst .rv-prog:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--sage);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.rst .rv-prog:hover,.rst .rv-prog:focus-visible{transform:translateY(-8px);background:linear-gradient(160deg,#565B46 0%,#4A4E3C 55%,#3F4335 100%);color:var(--cream);border-color:#6A6F57;box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 34px 44px -22px rgba(17,20,16,.6),0 10px 18px -8px rgba(17,20,16,.35)}
+.rst .rv-prog:hover:before{transform:translateX(120%)}
+.rst .rv-prog:hover:after{width:100%}
+.rst .rv-prog:hover .num{color:var(--cream)}
+.rst .rv-prog:hover p{color:#E2DDD0}
+.rst .rv-prog:hover .go{border-color:rgba(237,230,218,.35)}
+.rst .rv-prog:hover .arr{transform:translateX(6px)}
+.rst .rv-prog:active{transform:translateY(-3px)}
+@media (prefers-reduced-motion:reduce){.rst .rv-prog,.rst .rv-prog:hover{transform:none}.rst .rv-prog:before{display:none}}
 .rst .rv-gh{border-color:#2A2E25}
 .rst .rv-box .tier:not(.pop){background:#fff}
 .rst.js .rv-box,.rst.js .rv-trust{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
