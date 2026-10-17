@@ -155,6 +155,13 @@ CSS = """<style>
 @media (max-width:860px){.rst .rv-quotes{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.rst .rv-q .stars svg{opacity:1;transform:none}.rst .rv-score .mini svg,.rst .rv-q.lit:after{animation:none}}
 .rst .tiers{margin-top:0}
+.rst{background:#E2E0D5}
+.rst .rv-box{border-color:#CFCDC1}
+.rst .rv-trust{background:#fff;border-color:#CFCDC1}
+.rst .rv-trust div{border-color:#E2E0D5}
+.rst .rv-prog,.rst .rv-q{background:#F4F2EB;border-color:#D3D1C5}
+.rst .rv-gh{border-color:#2A2E25}
+.rst .rv-box .tier:not(.pop){background:#fff}
 .rst.js .rv-box,.rst.js .rv-trust{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .rst.js .rv-box.in,.rst.js .rv-trust.in{opacity:1;transform:none}
 .rst.js .rv-prog,.rst.js .rv-path li,.rst.js .rv-trust > div{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),background .25s,color .25s}
@@ -201,8 +208,8 @@ BODY = f"""{CSS}
     <div class="eyebrow" style="color:var(--sage)">Rehab + Performance</div>
     <h1>Rebuild the body you live in.</h1>
     <p class="sub">Doctor-built 12-week programs for pain, performance and fat loss. Train at home or in the gym, in English or Spanish.</p>
-    <div class="ctas"><a class="btn" href="#programs">Find your program <span class="arr">→</span></a><a class="btn ghost" href="{r}free-guides/">Get a free guide</a></div>
-    <div class="rv-offer"><b>Not ready yet?</b><span>Start with a free 10-minute routine for your area. <a href="{r}free-guides/">Pick your free guide</a></span></div>
+    <div class="ctas"><a class="btn" href="#programs">Find your program <span class="arr">→</span></a><a class="btn ghost" href="{r}quiz/">Take the 2-minute quiz</a></div>
+    <div class="rv-offer"><b>Not sure where to start?</b><span>Answer 10 quick questions and get your program and support level. Or <a href="{r}free-guides/">start with a free guide</a>.</span></div>
   </div>
 </section>
 
@@ -218,7 +225,7 @@ BODY = f"""{CSS}
 
 <section class="rv" id="programs" style="padding-top:8px"><div class="wrap">
   <div class="rv-box mark">
-    <div class="rv-head"><div><div class="eyebrow">Find Your Program</div><h2>Where are you starting?</h2></div><p>Pick the closest match. Each program page shows exactly what's inside, week by week, and all three ways to do it.</p></div>
+    <div class="rv-head"><div><div class="eyebrow">Find Your Program</div><h2>Where are you starting?</h2></div><p>Pick the closest match. Each program page shows exactly what's inside, week by week, and all three ways to do it. Not sure? <a href="{r}quiz/" style="color:var(--olive-d);font-weight:700">Take the quiz</a>.</p></div>
     {finder}
   </div>
 </div></section>
@@ -279,7 +286,7 @@ BODY = f"""{CSS}
 <section class="rv" style="padding-top:0"><div class="wrap">
   <div class="rv-box night mark rv-cta">
     <div><div class="eyebrow">Start Today</div><h2 style="margin-top:12px">We don't have weak bodies. We have weak systems.</h2><p>Your body is built to be resilient. RESET gives it a way to get there.</p></div>
-    <div class="btns"><a class="btn" href="#programs">Find your program <span class="arr">→</span></a><a class="btn ghost" href="{r}free-guides/">Free guides</a></div>
+    <div class="btns"><a class="btn" href="#programs">Find your program <span class="arr">→</span></a><a class="btn ghost" href="{r}quiz/">Take the quiz</a></div>
   </div>
 </div></section>
 @@JS@@
