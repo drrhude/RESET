@@ -1,0 +1,13 @@
+<script>
+(function(){var b=document.querySelector(".rv-bar");if(!b)return;if(!("IntersectionObserver" in window)){b.classList.add("seen");return}
+new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){b.classList.add("seen");o.disconnect()}})},{threshold:.4}).observe(b);
+var v=document.querySelector(".rv-hero video");if(v){var rm=matchMedia("(prefers-reduced-motion: reduce)").matches,sd=navigator.connection&&navigator.connection.saveData;if(rm||sd){v.removeAttribute("autoplay");v.pause()}else{new IntersectionObserver(function(es){es[0].isIntersecting?v.play().catch(function(){}):v.pause()}).observe(v)}}
+(function(){var els=document.querySelectorAll(".rv-box,.rv-trust");if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in")});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add("in");io.unobserve(t);setTimeout(function(){t.querySelectorAll(".rv-prog,.rv-path li,:scope > div").forEach(function(c){c.style.transitionDelay=""})},1800)}})},{threshold:.12});
+els.forEach(function(e){io.observe(e);e.querySelectorAll(".rv-prog,.rv-path li,:scope > div").forEach(function(c,i){c.style.transitionDelay=(Math.min(i,10)*0.06)+"s"})})})();
+var qs=[].slice.call(document.querySelectorAll(".rv-q"));if(qs.length){var rm2=matchMedia("(prefers-reduced-motion: reduce)").matches,i=0,t=null;
+function step(){qs.forEach(function(q){q.classList.remove("lit")});qs[i%qs.length].classList.add("lit");i++}
+new IntersectionObserver(function(es){var e=es[0];if(e.isIntersecting){qs.forEach(function(q){q.classList.add("in")});if(!rm2&&!t){setTimeout(step,1200);t=setInterval(step,3600)}}else if(t){clearInterval(t);t=null;qs.forEach(function(q){q.classList.remove("lit")})}},{threshold:.35}).observe(qs[0].parentElement)}
+document.addEventListener("click",function(e){var a=e.target.closest("a");if(!a||typeof gtag!=="function")return;var h=a.getAttribute("href")||"";
+if(h.indexOf("free-guide")>-1)gtag("event","free_guide_click",{link_text:a.textContent.trim().slice(0,60)});else if(/checkout|fastpaydirect/.test(h))gtag("event","begin_checkout",{link_url:a.href});else if(h.indexOf("#programs")>-1)gtag("event","find_program_click",{link_text:a.textContent.trim().slice(0,60)})},true)})();
+</script>

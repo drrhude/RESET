@@ -312,7 +312,7 @@ html,body{margin:0;background:#111410}
 .rst .oto-fine{font-size:12px;color:var(--sage);margin-top:14px}
 .rst .legal{max-width:72ch}.rst .legal h2{margin-top:36px;font-size:22px}.rst .legal p,.rst .legal li{color:var(--grey);line-height:1.65}
 @media (max-width:860px){.rst .lm-grid{grid-template-columns:1fr}.rst .form .row2{grid-template-columns:1fr}}
-</style><div class="rst" lang="en"><header class="nav"><div class="wrap">
+</style><!--v2--><link rel="stylesheet" href="../assets/v2.css"><!--/v2--><div class="rst" lang="en"><header class="nav"><div class="wrap">
   <a href="../" aria-label="RESET home"><span class="lg" role="img" aria-label="RESET"></span></a>
   <nav class="nv-links" aria-label="Main">
     <a href="../">Home</a>
@@ -367,6 +367,8 @@ html,body{margin:0;background:#111410}
 <section class="mist"><div class="wrap">
   <h2>Questions</h2><div class="faq"><details><summary>I play 4–5 days a week. When do I train?</summary><p>The plan schedules strength around your play days. Heavy lower-body work stays 48 hours away from your biggest match days.</p></details><details><summary>I&#x27;ve had an Achilles or calf strain.</summary><p>Calf and Achilles strength is built in. If you&#x27;re recovering from a recent injury, get cleared first.</p></details><details><summary>Do I need a gym?</summary><p>No. Every exercise has a home version using a band and a pair of dumbbells or a kettlebell. Gym options are listed for every exercise.</p></details><details><summary>How do the weekly check-ins work?</summary><p>After checkout you book an onboarding call. Custom and Doctor-Led members then check in every week by phone or video to review numbers and adjust the plan.</p></details><details><summary>Can I cancel?</summary><p>Yes. Custom and Doctor-Led are month to month. Cancel anytime before your next billing date.</p></details></div>
 </div></section>
+
+<!--v2--><section class="v2-quiz"><div class="wrap"><div><div class="eyebrow">Not sure this is the one?</div><h2>Take the 2-minute quiz</h2><p>10 questions. Get the program and support level that fit where you're starting.</p></div><a class="btn" href="../quiz/">Take the quiz <span class="arr">→</span></a></div></section><!--/v2-->
 <section class="dark belief"><div class="wrap">
   <h2>Movement is medicine.</h2><p class="lede">Stay on the court for years. Start this week.</p>
   <div style="margin-top:30px"><a class="btn" href="#plans">Choose your plan</a></div>
@@ -400,5 +402,9 @@ html,body{margin:0;background:#111410}
 })();
 </script>
 
+
+<!--v2--><script>(function(){var r=document.querySelector(".rst");if(!r||!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;r.classList.add("v2r");
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.08});
+r.querySelectorAll("section:not(.hero) > .wrap").forEach(function(w){io.observe(w)})})();</script><!--/v2-->
 </body>
 </html>

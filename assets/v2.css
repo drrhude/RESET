@@ -1,0 +1,49 @@
+/* RESET v2 layer for program pages: stone background, floating boxes, green lifted cards.
+   Loaded after each page's own styles (see tools/apply_v2.py). */
+.rst{background:#E2E0D5}
+.rst .nav{background:rgba(17,20,16,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.rst section.hero{padding-block:64px 104px}
+.rst section:not(.hero){padding-block:clamp(10px,1.4vw,14px);background:transparent!important;background-image:none!important;color:inherit}
+.rst section.hero + section{margin-top:-56px;position:relative;z-index:2}
+.rst section:not(.hero) > .wrap{position:relative;overflow:hidden;width:calc(100% - 28px);max-width:1120px;background:#fff;border:1px solid #CFCDC1;padding:clamp(24px,4vw,52px);box-shadow:0 40px 70px -55px rgba(17,20,16,.55)}
+.rst section.dark:not(.hero) > .wrap{background-color:var(--night);color:var(--cream);border-color:#262A21;background-image:linear-gradient(#1C2019 1px,transparent 1px),linear-gradient(90deg,#1C2019 1px,transparent 1px);background-size:48px 48px}
+.rst section.dark:not(.hero) > .wrap:after{content:"";position:absolute;right:-30px;bottom:-14px;width:min(520px,70%);height:110px;background:var(--logo) no-repeat right bottom/contain;opacity:.08;filter:brightness(3);pointer-events:none}
+.rst section.dark:not(.hero) > .wrap > *{position:relative;z-index:1}
+.rst footer{margin-top:clamp(36px,5vw,64px)}
+/* chain cards ("why it keeps coming back") */
+.rst .chain{gap:12px;border-top:0}
+.rst .chain > div{background:#F4F2EB;border:1px solid #D3D1C5;border-radius:6px;padding:20px;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.rst .chain > div:hover{transform:translateY(-4px);box-shadow:0 20px 30px -20px rgba(17,20,16,.45)}
+/* phases: green lifted cards */
+.rst .phases{border:0;gap:12px}
+.rst .phase{border:1px solid #50553F!important;border-radius:6px;background:linear-gradient(160deg,#4A4E3C 0%,#3F4335 55%,#363A2D 100%);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 14px 24px -14px rgba(0,0,0,.6);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,opacity .6s ease}
+.rst .phase:hover{transform:translateY(-6px);box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 30px 40px -22px rgba(0,0,0,.7)}
+.rst .phase p{color:#CFCABD}
+.rst.js .phases:not(.seen) .phase{opacity:.5}
+/* what you get */
+.rst .inside > div{border-color:#E2E0D5}
+/* tiers: rounded, lifted, green featured tier */
+.rst .tiers{border-top:0;gap:14px}
+.rst .tier{border:1px solid #D3D1C5!important;border-radius:6px;background:#F4F2EB;box-shadow:0 14px 24px -18px rgba(17,20,16,.45);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.rst .tier:hover{transform:translateY(-6px);box-shadow:0 30px 40px -24px rgba(17,20,16,.55)}
+.rst .tier.pop{background:linear-gradient(160deg,#4A4E3C 0%,#3F4335 55%,#363A2D 100%);border-color:#50553F!important;color:var(--cream)}
+.rst .tier .badge{top:12px;right:12px;border-radius:999px}
+.rst .tier.pop .badge{background:var(--cream);color:var(--night)}
+@media (max-width:860px){.rst .tier{border-bottom:1px solid #D3D1C5!important}}
+/* doctor photo */
+.rst .doc .photo img{border-radius:4px}
+.rst .doc .photo:after{border-radius:8px}
+/* FAQ */
+.rst .faq{border-top-color:#2A2E25}
+/* quiz prompt box (injected) */
+.rst section.v2-quiz > .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) auto;gap:20px 32px;align-items:center;background:linear-gradient(160deg,#4A4E3C 0%,#3F4335 60%,#363A2D 100%);border-color:#50553F;color:var(--cream)}
+.rst section.v2-quiz .eyebrow{color:var(--sage)}
+.rst section.v2-quiz h2{color:var(--cream);margin-top:10px}
+.rst section.v2-quiz p{color:#D6D1C4;margin-top:10px;max-width:52ch}
+.rst section.v2-quiz .btn{background:var(--cream);color:var(--night);border-color:var(--cream)}
+.rst section.v2-quiz .btn:hover{background:transparent;color:var(--cream)}
+@media (max-width:760px){.rst section.v2-quiz > .wrap{grid-template-columns:1fr}}
+/* scroll reveal */
+.rst.v2r section:not(.hero) > .wrap{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rst.v2r section:not(.hero) > .wrap.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rst.v2r section:not(.hero) > .wrap{opacity:1;transform:none}.rst .phase,.rst .tier,.rst .chain > div{transition:none}}

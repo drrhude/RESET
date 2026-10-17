@@ -312,7 +312,7 @@ html,body{margin:0;background:#111410}
 .rst .oto-fine{font-size:12px;color:var(--sage);margin-top:14px}
 .rst .legal{max-width:72ch}.rst .legal h2{margin-top:36px;font-size:22px}.rst .legal p,.rst .legal li{color:var(--grey);line-height:1.65}
 @media (max-width:860px){.rst .lm-grid{grid-template-columns:1fr}.rst .form .row2{grid-template-columns:1fr}}
-</style><div class="rst" lang="es"><header class="nav"><div class="wrap">
+</style><!--v2--><link rel="stylesheet" href="../../assets/v2.css"><!--/v2--><div class="rst" lang="es"><header class="nav"><div class="wrap">
   <a href="../../es/" aria-label="RESET home"><span class="lg" role="img" aria-label="RESET"></span></a>
   <nav class="nv-links" aria-label="Main">
     <a href="../../es/">Inicio</a>
@@ -367,6 +367,8 @@ html,body{margin:0;background:#111410}
 <section class="mist"><div class="wrap">
   <h2>Preguntas</h2><div class="faq"><details><summary>¿Entrenar fuerza me hará voluminosa?</summary><p>No. La fuerza pesada con pocas repeticiones genera fuerza sin mucho volumen. Los bailarines más fuertes saltan más alto y se lastiman menos.</p></details><details><summary>Mi bailarín es menor de 18 años.</summary><p>Cada bloque incluye una guía para padres y una página de consentimiento. Un adulto debe supervisar el trabajo pesado y los saltos.</p></details><details><summary>¿Necesito un gimnasio?</summary><p>No. Cada ejercicio tiene una versión para casa con una banda y un par de mancuernas o una pesa rusa. También incluimos opciones de gimnasio para cada ejercicio.</p></details><details><summary>¿Cómo funcionan las consultas semanales?</summary><p>Después del pago agenda una llamada inicial. Los miembros Personalizado y Con el Doctor tienen una consulta cada semana por teléfono o video para revisar sus números y ajustar el plan.</p></details><details><summary>¿Puedo cancelar?</summary><p>Sí. Personalizado y Con el Doctor son mes a mes. Cancele cuando quiera antes de su siguiente fecha de cobro.</p></details></div>
 </div></section>
+
+<!--v2--><section class="v2-quiz"><div class="wrap"><div><div class="eyebrow">¿No está seguro de que sea este?</div><h2>Haga el cuestionario de 2 minutos</h2><p>10 preguntas. Reciba el programa y el nivel de apoyo que se ajustan a donde usted empieza.</p></div><a class="btn" href="../cuestionario/">Hacer el cuestionario <span class="arr">→</span></a></div></section><!--/v2-->
 <section class="dark belief"><div class="wrap">
   <h2>El movimiento es medicina.</h2><p class="lede">Regrese a la pista, más fuerte. Empiece esta semana.</p>
   <div style="margin-top:30px"><a class="btn" href="#plans">Elija su plan</a></div>
@@ -400,5 +402,9 @@ html,body{margin:0;background:#111410}
 })();
 </script>
 
+
+<!--v2--><script>(function(){var r=document.querySelector(".rst");if(!r||!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;r.classList.add("v2r");
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.08});
+r.querySelectorAll("section:not(.hero) > .wrap").forEach(function(w){io.observe(w)})})();</script><!--/v2-->
 </body>
 </html>
