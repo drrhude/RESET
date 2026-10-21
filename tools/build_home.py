@@ -7,7 +7,7 @@ import re, sys, json, pathlib, html as H
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
 PREVIEW = "--preview" in sys.argv
-CSS = (TOOLS / "home.css.html").read_text()
+CSS = (TOOLS / "home.css.html").read_text() + (TOOLS / "paths.css.html").read_text()
 JS = (TOOLS / "home.js.html").read_text()
 STAR = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>'
 
@@ -28,6 +28,12 @@ L = {
   find_l="Find Your Program", find_h="Where are you starting?",
   find_p='Pick the closest match. Each program page shows exactly what\'s inside, week by week, and all three ways to do it. Not sure? <a href="{quiz}" style="color:var(--olive-d);font-weight:700">Take the quiz</a>.',
   see="See the program",
+  find_h_doors="What brings you here?",
+  find_p_doors='Pick a path. You will only see the programs that fit it. Not sure? <a href="{quiz}" style="color:var(--olive-d);font-weight:700">Take the 2-minute quiz</a>.',
+  doors=[("rehab/", "", "01 · Rehab", "I'm hurting", "Back, neck, knee, shoulder or hip pain. Get out of pain, then build it back stronger.", "Low back · Neck · Knee · Shoulder · Hip", "See rehab programs"),
+         ("performance/", "", "02 · Performance", "I want to perform", "Train the body your sport needs. More power, fewer tweaks, a body that lasts the season.", "Golf · Pickleball · Dance · Student athlete", "See performance programs"),
+         ("nutrition/", " lite", "03 · Nutrition", "I want to lose fat", "Lose fat, keep your muscle, and keep it off without giving up your life.", "One program · $147", "See the program")],
+  door_quiz_b="Not sure which one?", door_quiz_s="10 quick questions. Get your program and support level.", door_quiz_btn="Take the quiz",
   groups=[("Rehab", "Get out of pain and build it back stronger.", [
       ("back", "Low Back", "Recurring low back pain, stiffness and flare-ups."),
       ("neck", "Neck", "Desk neck, stiffness, tension headaches and arm symptoms."),
@@ -157,6 +163,10 @@ def build(lang):
             n += 1
             tiles += f'<a class="rv-prog" href="{P(slug)}/"><span class="num">{n:02d}</span><h3>{name}</h3><p>{H.escape(desc)}</p><span class="go">{t["see"]} <span class="arr">→</span></span></a>'
         finder += f'<div class="rv-group"><div class="rv-gh"><h3>{g}</h3><p>{d}</p></div><div class="rv-progs">{tiles}</div></div>'
+    if t.get("doors"):
+        doors = "".join(f'<a class="pd-door{lite}" href="{P(href)}"><span class="k">{k}</span><h3>{h}</h3><p>{d}</p><span class="list">{lst}</span><span class="go">{go} <span class="arr">→</span></span></a>' for href, lite, k, h, d, lst, go in t["doors"])
+        finder = f'<div class="pd-doors">{doors}</div><div class="pd-quiz"><div><b>{t["door_quiz_b"]}</b> <span>{t["door_quiz_s"]}</span></div><a class="btn" href="{q}">{t["door_quiz_btn"]} <span class="arr">→</span></a></div>'
+        t = dict(t, find_h=t["find_h_doors"], find_p=t["find_p_doors"])
     trust = "".join(f"<div><b>{a}</b><span>{b}</span></div>" for a, b in t["trust"])
     phases = "".join(f'<div class="phase"><div class="n">{i+1:02d}</div><h3>{a}</h3><div class="w">{b}</div><p>{H.escape(c)}</p></div>' for i, (a, b, c) in enumerate(t["phases"]))
     reviews = "".join(f'<blockquote class="rv-q"><div class="stars" aria-label="{t["stars_aria"]}">{STAR*5}</div><p>&ldquo;{a}&rdquo;</p><cite>{b}, {t["review_word"]}</cite></blockquote>' for a, b in t["reviews"])
